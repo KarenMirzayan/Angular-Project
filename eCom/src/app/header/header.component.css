@@ -1,0 +1,49 @@
+/* The sidebar menu */
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px; /* Start hidden (off-screen) */
+  background-color: #111;
+  padding-top: 60px;
+  transition: 0.5s; /* Smooth sliding effect */
+}
+
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* The close button */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+
+/* When the sidebar is active (open) */
+.sidebar.active {
+  left: 0;
+}
+
+/* Button to open the sidebar */
+.openbtn {
+  cursor: pointer;
+  border: none;
+  margin: 10px;
+  background-color: #ffffff;
+}
+
+.icon-hamburger{
+  z-index: 2;
+}
