@@ -1,1 +1,16 @@
-<p>home works!</p>
+<div class="home">
+  <h2>Featured products</h2>
+  <div class="items">
+    <div *ngFor="let item of items; let i = index" class="card" id="{{ item.name}}">
+      <div class="image-placeholder" [ngStyle]="{'background': gradients[i]}"></div>
+      <div class="reviews">
+        <app-stars [stars]="item.stars"></app-stars>
+        <p>{{ item.reviews }} reviews</p>
+      </div>
+      <p>{{ item.name }}</p>
+      <p>{{ item.category }}</p>
+      <p>{{ item.price  }}$</p>
+      <button class="btn">ADD TO CART</button>
+    </div>
+  </div>
+</div>

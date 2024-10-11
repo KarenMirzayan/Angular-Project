@@ -1,0 +1,8 @@
+<div class="star-rating">
+  <ng-container *ngFor="let _ of filledStars">
+    <fa-icon [icon]="faStar" class="star"></fa-icon>
+  </ng-container>
+  <ng-container *ngFor="let _ of emptyStars">
+    <fa-icon [icon]="faStarEmpty" class="star"></fa-icon>
+  </ng-container>
+</div>
