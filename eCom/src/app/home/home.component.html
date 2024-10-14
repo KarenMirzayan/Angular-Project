@@ -1,4 +1,6 @@
 <div class="home">
+  <a routerLink="/cart">Go to Cart</a>
+
   <h2>Featured products</h2>
   <div class="items">
     <div *ngFor="let item of items; let i = index" class="card" id="{{ item.name}}">
@@ -10,7 +12,7 @@
       <p>{{ item.name }}</p>
       <p>{{ item.category }}</p>
       <p>{{ item.price  }}$</p>
-      <button class="btn">ADD TO CART</button>
+      <button class="btn" (click)="addToCart(item)">ADD TO CART</button>
     </div>
   </div>
 </div>
