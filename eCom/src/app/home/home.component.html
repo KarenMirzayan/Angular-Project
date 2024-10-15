@@ -1,16 +1,19 @@
 <div class="home">
   <h2>Featured products</h2>
   <div class="items">
-    <div *ngFor="let item of items; let i = index" class="card" id="{{ item.name}}">
-      <div class="image-placeholder" [ngStyle]="{'background': gradients[i]}"></div>
-      <div class="reviews">
-        <app-stars [stars]="item.stars"></app-stars>
-        <p>{{ item.reviews }} reviews</p>
+    <a *ngFor="let item of items; let i = index">
+      <div class="card">
+        <div class="image-placeholder" [ngStyle]="{'background': gradients[i]}"></div>
+        <div class="reviews">
+          <app-stars [stars]="item.stars"></app-stars>
+          <p class="bolder-text">{{ item.reviews }} reviews</p>
+        </div>
+        <p class="card-name">{{ item.name }}</p>
+        <p class="card-category">{{ item.category }}</p>
+        <p class="card-description">{{ item.short_description }}</p>
+        <p class="card-price">{{ item.price  }}$</p>
+        <button class="btn bolder-text">ADD TO CART</button>
       </div>
-      <p>{{ item.name }}</p>
-      <p>{{ item.category }}</p>
-      <p>{{ item.price  }}$</p>
-      <button class="btn">ADD TO CART</button>
-    </div>
+    </a>
   </div>
 </div>

@@ -7,7 +7,8 @@
 .items{
   display: grid;
   grid-template-columns:repeat(5, 1fr);
-  grid-gap: 20px;
+  grid-gap: 50px;
+  grid-row-gap: 100px;
   grid-auto-columns: 200px;
 
 }
@@ -18,9 +19,7 @@ p {
 }
 
 .card{
-  border: 1px solid black;
-  border-radius: 10px;
-  height: 300px;
+  height: 400px;
   width: 200px;
   display: flex;
   flex-direction: column;
@@ -34,6 +33,12 @@ p {
   height: 40%;
 }
 
+.reviews{
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+}
+
 .btn{
   color: rgb(255, 250, 240);
   border: none;
@@ -41,4 +46,30 @@ p {
   padding: 10px 50px;
   background-image: linear-gradient(to right, #ff9b37, #ff6423);
   cursor: pointer;
+}
+
+.card-name {
+  font-size: 2.2rem;
+}
+
+.card-category {
+  font-size: 1.2rem;
+}
+
+.card-description {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.card-price {
+  font-size: 1.8rem;
+}
+
+.btn-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.bolder-text {
+  font-weight: 520;
 }

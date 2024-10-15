@@ -18,7 +18,7 @@ export class HomeComponent{
   gradients: string[] = []
   constructor() {
     for (let i = 1; i <= 10; i++) {
-      let item: Item = new Item("Name" + i);
+      let item: Item = new Item("Name " + i);
       this.items.push(item);
       this.gradients.push(this.applyRandomGradient())
     }
