@@ -6,15 +6,15 @@ export class Item {
   category: string;
   stars: number;
   reviews: number;
-  static categories: string[] = ["Food", "Clothes", "Electronics"]
-  constructor(name: string) {
+  static categories: string[] = ["Food", "Clothes", "Electronics"];
+
+  constructor(name: string, price?: number, category?: string) {
     this.name = name;
-    this.description = "This is" + this.name + ". His description can be complex and large, but for tests sake it's like this.";
+    this.description = "This is " + this.name + ". His description can be complex and large, but for tests sake it's like this.";
     this.short_description = "Short description for this product";
-    this.price = Math.floor(Math.random() * 200);
-    this.category = Item.categories[Math.floor(Math.random() * Item.categories.length)];
-    let x = (Math.random() * 5 + 1)
-    this.stars = Math.floor(x > 5 ? 5 : x);
+    this.price = price !== undefined ? price : Math.floor(Math.random() * 200);
+    this.category = category !== undefined ? category : Item.categories[Math.floor(Math.random() * Item.categories.length)];
+    this.stars = Math.floor(Math.random() * 5) + 1;
     this.reviews = Math.floor(Math.random() * 100);
   }
 }
