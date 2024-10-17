@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   background-color: rgb(265, 250, 240);
+  font-family: serif;
 }
 
 html, body { height: 100%; }

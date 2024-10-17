@@ -1,3 +1,7 @@
 .star{
   color: rgb(255, 166, 9);
 }
+
+.star-rating{
+  margin-right: 5px;
+}
