@@ -33,4 +33,9 @@ export class CartService {
   getCartItems() {
     return this.cartItems$;
   }
+
+  updateCart(cartItems: CartItem[]) {
+    this.cartItems.next(cartItems);
+  }
+  
 }
