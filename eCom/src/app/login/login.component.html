@@ -1,0 +1,46 @@
+<!-- login.component.html -->
+<div class="login-container">
+  <div class="login-box">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          class="form-control"
+        />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched; else place" class="error-msg">
+          Please enter a valid email address.
+        </div>
+        <ng-template #place>
+          <div style="height: 20px"></div>
+        </ng-template>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Enter your password"
+          class="form-control"
+        />
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched; else place" class="error-msg">
+          Password is required and should be at least 6 characters.
+        </div>
+        <ng-template #place>
+          <div style="height: 20px"></div>
+        </ng-template>
+      </div>
+
+      <button type="submit" class="btn" [class.button-beauty]="loginForm.valid" [disabled]="loginForm.invalid">
+        Login
+      </button>
+
+    </form>
+    <p class="signup-link">Don't have an account? <a [routerLink]="['/signup']">Sign up</a></p>
+  </div>
+</div>

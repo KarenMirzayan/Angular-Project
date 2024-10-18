@@ -4,6 +4,8 @@
   align-items: center;
 }
 
+
+
 .items{
   display: grid;
   grid-template-columns:repeat(5, 1fr);
@@ -19,7 +21,7 @@ p {
 }
 
 .card{
-  height: 400px;
+  height: 500px;
   width: 200px;
   display: flex;
   flex-direction: column;
@@ -39,30 +41,25 @@ p {
   margin: 10px 0;
 }
 
-.btn{
-  color: rgb(255, 250, 240);
-  border: none;
-  border-radius: 20px;
-  padding: 10px 50px;
-  background-image: linear-gradient(to right, #ff9b37, #ff6423);
-  cursor: pointer;
-}
 
 .card-name {
   font-size: 2.2rem;
 }
 
 .card-category {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  margin: 10px 0;
 }
 
 .card-description {
   font-size: 1.2rem;
   text-align: center;
+  margin: 15px 0;
 }
 
 .card-price {
   font-size: 1.8rem;
+  margin: 10px 0;
 }
 
 .btn-text {

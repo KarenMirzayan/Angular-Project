@@ -4,7 +4,15 @@
   align-items: center;
 }
 
+.logo-head a{
+  text-decoration: none;
+  color: #000000;
 
+  &:visited{
+    text-decoration: none;
+    color: #000000;
+  }
+}
 
 
 .sidebar {
@@ -37,6 +45,14 @@
   top: 0;
   right: 25px;
   font-size: 36px;
+  background: transparent;
+  border: none;
+  color: #818181;
+  transition: 0.3s;
+}
+
+.sidebar .closebtn:hover{
+  color: #f1f1f1;
 }
 
 /* When the sidebar is active (open) */
@@ -50,6 +66,7 @@
   border: none;
   margin: 10px;
   background-color: transparent;
+  padding: 0;
 }
 
 .searchbtn {
@@ -57,9 +74,38 @@
   border: none;
   margin: 10px;
   background-color: transparent;
+  padding: 0;
 }
 
 .logo-head{
   margin-left: auto;
   margin-right: auto;
+}
+
+.right{
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+.cart-icon{
+  font-size: 40px;
+}
+
+.icon-link{
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.icon-link:link{
+  text-decoration: none;
+  color: #000000;
+}
+
+.icon-link:visited{
+  text-decoration: none;
+  color: #000000;
+}
+
+.user-icon{
+  font-size: 40px;
 }
