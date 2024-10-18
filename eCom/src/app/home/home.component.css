@@ -1,18 +1,15 @@
-.home{
+.home {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-
-
-.items{
+.items {
   display: grid;
-  grid-template-columns:repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 50px;
   grid-row-gap: 100px;
   grid-auto-columns: 200px;
-
 }
 
 p {
@@ -20,7 +17,7 @@ p {
   padding: 0;
 }
 
-.card{
+.card {
   height: 500px;
   width: 200px;
   display: flex;
@@ -28,19 +25,18 @@ p {
   align-items: center;
 }
 
-
-.image-placeholder{
+.image {
   border-radius: 10px;
-  width: 100%;
-  height: 40%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
 }
 
-.reviews{
+.reviews {
   display: flex;
   flex-direction: row;
   margin: 10px 0;
 }
-
 
 .card-name {
   font-size: 2.2rem;

@@ -1,67 +1,180 @@
-/* Container for the cart page, set up two columns */
+/* General styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h2,
+h3 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+p {
+  margin: 0;
+}
+
+.empty-cart {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 18px;
+}
+
+/* Cart Page Layout */
 .cart-page-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-  }
-  
-  /* Left section for cart items */
-  .cart-items-section {
-    width: 60%;
-    padding-right: 20px;
-  }
-  
-  /* Right section for order summary */
-  .order-summary-section {
-    width: 35%;
-    border: 1px solid #ddd;
-    padding: 20px;
-    background-color: #f9f9f9;
-    position: relative;
-  }
-  
-  /* Checkout button styling */
-  .checkout-btn {
-    background-color: #ff6f61;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    width: 100%;
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
-  }
-  
-  .checkout-btn:hover {
-    background-color: #e65a50;
-  }
-  
-  /* Other basic styling for cart items */
-  .cart-headers, .cart-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-bottom: 10px;
-  }
-  
-  .item-info {
-    display: flex;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 40px;
+}
+
+/* Left Column (Cart Items Section) */
+.cart-items-section {
+  flex: 3;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items-section h2 {
+  color: #333;
+}
+
+/* Select All Styling */
+.select-all {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.select-all input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Cart Table Headers */
+.cart-headers {
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 1fr 1fr 0.2fr;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 1fr 1fr 0.2fr;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name {
+  font-size: 16px;
+  color: #333;
+}
+
+.item-price {
+  color: #999;
+}
+
+/* Quantity Adjuster */
+.item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.item-quantity button {
+  width: 30px;
+  height: 30px;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+}
+
+.item-quantity p {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
+  width: 40px;
+}
+
+.item-total {
+  font-weight: bold;
+  color: #333;
+}
+
+.item-delete button {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  color: red;
+  cursor: pointer;
+}
+
+/* Right Column (Order Summary) */
+.order-summary-section {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  align-self: start;
+  width: 100%;
+}
+
+.order-summary-section h3 {
+  color: #333;
+}
+
+.checkout-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.checkout-btn:hover {
+  background-color: #218838;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cart-page-container {
     flex-direction: column;
+    gap: 20px;
   }
-  
-  .item-quantity, .item-total, .item-delete {
-    display: flex;
-    align-items: center;
+
+  .cart-headers,
+  .cart-item {
+    grid-template-columns: 1fr 1fr 1fr;
   }
-  
-  .item-delete button {
-    background: none;
-    border: none;
-    color: #ff6f61;
-    font-size: 18px;
-    cursor: pointer;
+
+  .cart-item input[type="checkbox"] {
+    display: none;
   }
-  
-  .item-delete button:hover {
-    color: #e65a50;
+
+  .order-summary-section {
+    margin-top: 20px;
   }
-  
+}

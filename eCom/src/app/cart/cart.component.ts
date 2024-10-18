@@ -7,9 +7,9 @@ import { CartService } from '../cart.service';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrl: './cart.component.css',
 })
 export class CartComponent {
   cartItems: CartItem[] = [];
@@ -18,15 +18,18 @@ export class CartComponent {
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.cartService.getCartItems().subscribe(items => {
+    this.cartService.getCartItems().subscribe((items) => {
       console.log('Cart items:', items);
       this.cartItems = items;
+      if (this.selectedItems.length == 0) {
+        this.selectedItems = new Array(this.cartItems.length).fill(false);
+      }
       console.log(this.cartItems);
     });
   }
 
   increaseQuantity(cartItem: CartItem) {
-    this.cartService.addToCart(cartItem.item); // Increments quantity
+    this.cartService.addToCart(cartItem.item);
   }
 
   decreaseQuantity(cartItem: CartItem) {
@@ -39,7 +42,7 @@ export class CartComponent {
   }
 
   removeItem(cartItem: CartItem) {
-    this.cartItems = this.cartItems.filter(item => item !== cartItem);
+    this.cartItems = this.cartItems.filter((item) => item !== cartItem);
     this.cartService.updateCart(this.cartItems);
   }
 
@@ -51,7 +54,7 @@ export class CartComponent {
   }
 
   toggleSelectAll(event: Event) {
-    this.selectedItems.fill(this.selectAll);  // Toggle all checkboxes
+    this.selectedItems.fill(this.selectAll);
   }
 
   getSelectedTotalPrice() {

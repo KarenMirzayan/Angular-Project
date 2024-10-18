@@ -3,7 +3,7 @@
   <div class="items">
     <a *ngFor="let item of items; let i = index">
       <div class="card">
-        <div class="image-placeholder" [ngStyle]="{'background': gradients[i]}"></div>
+        <img class="image" [src]="item.image" alt="item.name" />
         <div class="reviews">
           <app-stars [stars]="item.stars"></app-stars>
           <p class="bolder-text">{{ item.reviews }} reviews</p>
@@ -11,8 +11,10 @@
         <p class="card-name">{{ item.name }}</p>
         <p class="card-category">{{ item.category }}</p>
         <p class="card-description">{{ item.short_description }}</p>
-        <p class="card-price">{{ item.price  }}$</p>
-        <button class="button-beauty bolder-text" (click)="addToCart(item)"><span>ADD TO CART</span></button>
+        <p class="card-price">{{ item.price }}$</p>
+        <button class="button-beauty bolder-text" (click)="addToCart(item)">
+          <span>ADD TO CART</span>
+        </button>
       </div>
     </a>
   </div>

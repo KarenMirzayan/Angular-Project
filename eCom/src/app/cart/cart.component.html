@@ -1,63 +1,66 @@
 <div *ngIf="cartItems.length === 0" class="empty-cart">
-    <p>Your cart is empty.</p>
-  </div>
-  
-  <div *ngIf="cartItems.length > 0" class="cart-page-container">
-    <!-- Left Column: Cart Items -->
-    <div class="cart-items-section">
-      <h2>Your Cart</h2>
-  
-      <!-- Select All Checkbox -->
-      <div class="select-all">
-        <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll($event)" />
-        <label>Select All</label>
+  <p>Your cart is empty.</p>
+</div>
+
+<div *ngIf="cartItems.length > 0" class="cart-page-container">
+  <!-- Left Column: Cart Items -->
+  <div class="cart-items-section">
+    <h2>Your Cart</h2>
+
+    <!-- Select All Checkbox -->
+    <div class="select-all">
+      <input
+        type="checkbox"
+        [(ngModel)]="selectAll"
+        (change)="toggleSelectAll($event)"
+      />
+      <label>Select All</label>
+    </div>
+
+    <!-- Table Headers -->
+    <div class="cart-headers">
+      <span></span>
+      <span>Product/Price</span>
+      <span>Quantity</span>
+      <span>Total</span>
+    </div>
+
+    <!-- Cart Items -->
+    <div *ngFor="let cartItem of cartItems; let i = index" class="cart-item">
+      <!-- Checkbox for individual selection -->
+      <input type="checkbox" [(ngModel)]="selectedItems[i]" />
+
+      <!-- Item Info (Image, Name, Price) -->
+      <div class="item-info">
+        <p class="item-name">{{ cartItem.item.name }}</p>
+        <p class="item-price">{{ cartItem.item.price }}$</p>
       </div>
-  
-      <!-- Table Headers -->
-      <div class="cart-headers">
-        <span>Product</span>
-        <span>Price</span>
-        <span>Quantity</span>
-        <span>Total</span>
+
+      <!-- Quantity Adjuster -->
+      <div class="item-quantity">
+        <button (click)="decreaseQuantity(cartItem)">-</button>
+        <p>{{ cartItem.quantity }}</p>
+        <button (click)="increaseQuantity(cartItem)">+</button>
       </div>
-  
-      <!-- Cart Items -->
-      <div *ngFor="let cartItem of cartItems; let i = index" class="cart-item">
-        <!-- Checkbox for individual selection -->
-        <input type="checkbox" [(ngModel)]="selectedItems[i]" />
-  
-        <!-- Item Info (Image, Name, Price) -->
-        <div class="item-info">
-          <p class="item-name">{{ cartItem.item.name }}</p>
-          <p class="item-price">{{ cartItem.item.price }}$</p>
-        </div>
-  
-        <!-- Quantity Adjuster -->
-        <div class="item-quantity">
-          <button (click)="decreaseQuantity(cartItem)">-</button>
-          <p>{{ cartItem.quantity }}</p>
-          <button (click)="increaseQuantity(cartItem)">+</button>
-        </div>
-  
-        <!-- Total Price for Item -->
-        <div class="item-total">
-          <p>{{ cartItem.item.price * cartItem.quantity }}$</p>
-        </div>
-  
-        <!-- Delete Item Button -->
-        <div class="item-delete">
-          <button (click)="removeItem(cartItem)">&#x2716;</button>
-        </div>
+
+      <!-- Total Price for Item -->
+      <div class="item-total">
+        <p>{{ cartItem.item.price * cartItem.quantity }}$</p>
+      </div>
+
+      <!-- Delete Item Button -->
+      <div class="item-delete">
+        <button (click)="removeItem(cartItem)">&#x2716;</button>
       </div>
     </div>
-  
-    <!-- Right Column: Order Summary -->
-    <div class="order-summary-section">
-      <h3>Order Summary</h3>
-      <p>Total Price for Selected Items: {{ getSelectedTotalPrice() }}$</p>
-  
-      <!-- Checkout Button -->
-      <button class="checkout-btn">Checkout</button>
-    </div>
   </div>
-  
+
+  <!-- Right Column: Order Summary -->
+  <div class="order-summary-section">
+    <h3>Order Summary</h3>
+    <p>Total Price for Selected Items: {{ getSelectedTotalPrice() }}$</p>
+
+    <!-- Checkout Button -->
+    <button class="checkout-btn">Checkout</button>
+  </div>
+</div>
