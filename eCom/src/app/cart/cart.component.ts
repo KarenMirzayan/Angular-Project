@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CartItem } from '../cart-item.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
@@ -11,7 +11,7 @@ import { CartService } from '../cart.service';
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 })
-export class CartComponent {
+export class CartComponent implements OnInit{
   cartItems: CartItem[] = [];
   selectedItems: boolean[] = [];
   selectAll: boolean = false;

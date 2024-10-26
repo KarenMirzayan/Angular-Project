@@ -22,6 +22,11 @@ p {
   font-size: 18px;
 }
 
+.order-summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 /* Cart Page Layout */
 .cart-page-container {
   display: flex;
@@ -35,12 +40,12 @@ p {
   flex: 3;
   background-color: #f9f9f9;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cart-items-section h2 {
-  color: #333;
+  color: #000;
 }
 
 /* Select All Styling */
@@ -83,7 +88,7 @@ p {
 
 .item-name {
   font-size: 16px;
-  color: #333;
+  color: #000;
 }
 
 .item-price {
@@ -137,7 +142,7 @@ p {
 }
 
 .order-summary-section h3 {
-  color: #333;
+  color: #000;
 }
 
 .checkout-btn {
@@ -167,14 +172,11 @@ p {
 
   .cart-headers,
   .cart-item {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .cart-item input[type="checkbox"] {
-    display: none;
+    grid-template-columns: 0.5fr 1.5fr 1fr 1fr 0.2fr;
   }
 
   .order-summary-section {
     margin-top: 20px;
+    margin-right: 20px;
   }
 }
