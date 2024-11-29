@@ -58,8 +58,11 @@
   <!-- Right Column: Order Summary -->
   <div class="order-summary-section">
     <h3>Order Summary</h3>
-    <p>Total Price for Selected Items: {{ getSelectedTotalPrice() }}$</p>
-
+    <div class="summary">
+        <p>Total Price for Selected Items: </p>
+        <p>{{ getSelectedTotalPrice() }}$</p>
+    </div>
+    
     <!-- Checkout Button -->
     <button class="checkout-btn">Checkout</button>
   </div>
