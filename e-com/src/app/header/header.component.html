@@ -1,39 +1,39 @@
 <div class="head" [class.hidden]="isHidden">
-  <div>
-    <div class="sidebar" [class.active]="isOpen">
-      <button class="closebtn" (click)="toggleSidebar()">×</button>
-      <a [routerLink]="['/home']">Home</a>
-      <a [routerLink]="['/cart']">Cart</a>
-      <div class="dropdown">
-        <a href="#">Categories<span (click)="toggleDropdown($event)">▼</span></a>
-        <div *ngIf="isDropdownOpen">
-          <div class="menu" *ngFor="let category of categories">
-            <a [routerLink]="['/categories', category.id]"> {{ category.name }}</a>
-          </div>
-        </div>
-      </div>
-      <a [routerLink]="['/brands']">Brands</a>
+  <div class="logo-head">
+    <div>
+      <a [routerLink]="['/home']">
+        <img ngSrc="laneige-logo.svg" alt="laneige" height="32" width="181" priority>
+      </a>
     </div>
 
-    <button class="openbtn" (click)="toggleSidebar()">
-      <fa-icon [icon]="this.faBars" class="user-icon"></fa-icon>
-    </button>
-
-    <button class="searchbtn" (click)="openSearch()">
-      <fa-icon [icon]="this.faSearch" class="user-icon"></fa-icon>
-    </button>
-
-  </div>
-  <div class="logo-head">
-    <a [routerLink]="['/home']">
-      <img ngSrc="laneige-logo.svg" alt="laneige" height="32" width="181" priority>
+    <a class="catalog" (mouseenter)="toggleCatalog(true)" (mouseleave)="toggleCatalog(false)">
+      <fa-icon [icon]="this.faBars"></fa-icon>
+      Catalog
+      <div
+        class="catalog-dropdown"
+        *ngIf="isCatalogOpen"
+        (mouseenter)="toggleCatalog(true)"
+        (mouseleave)="toggleCatalog(false)">
+        <ul>
+          <li><a href="#">Item 1</a></li>
+          <li><a href="#">Item 2</a></li>
+          <li><a href="#">Item 3</a></li>
+        </ul>
+      </div>
     </a>
+
   </div>
+
 
   <div class="right">
-    <a [routerLink]="['/cart']" class="cart icon-link"><fa-icon [icon]="this.faCart" class="cart-icon"></fa-icon></a>
-    <a [routerLink]="['/login']" class="user icon-link"><fa-icon [icon]="this.faUser" class="user-icon"></fa-icon></a>
-  </div>
+    <div>
+      <button class="searchbtn" (click)="openSearch()">
+        <fa-icon [icon]="this.faSearch" class="user-icon"></fa-icon>
+      </button>
+      <a [routerLink]="['/cart']" class="cart icon-link"><fa-icon [icon]="this.faCart" class="cart-icon"></fa-icon></a>
+      <a [routerLink]="['/login']" class="user icon-link"><fa-icon [icon]="this.faUser" class="user-icon"></fa-icon></a>
+    </div>
 
-  <div (click)="toggleSidebar()" class="blur" *ngIf="isOpen"></div>
+    <div (click)="toggleSidebar()" class="blur" *ngIf="isOpen"></div>
+  </div>
 </div>

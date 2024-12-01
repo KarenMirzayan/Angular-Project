@@ -5,7 +5,6 @@ import {RouterLink} from "@angular/router";
 import {faBarsStaggered, faMagnifyingGlass, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faUserCircle} from "@fortawesome/free-regular-svg-icons";
-import {Category} from "../../categories.model";
 
 @Component({
   selector: 'app-header',
@@ -28,17 +27,7 @@ export class HeaderComponent {
   faBars = faBarsStaggered;
   faSearch = faMagnifyingGlass;
 
-  isDropdownOpen=false;
-  categories:Category[] = [
-    {
-      id: 1,
-      name: 'Food'
-    },
-    {
-      id: 2,
-      name: 'Clothes'
-    }
-  ]
+  isCatalogOpen = false;
 
   isSearching = false;
 
@@ -60,6 +49,7 @@ export class HeaderComponent {
       if (currentScroll > this.lastScrollTop) {
         // Scrolling down
         this.isHidden = true;
+        this.isCatalogOpen = false;
       } else {
         // Scrolling up
         this.isHidden = false;
@@ -81,8 +71,7 @@ export class HeaderComponent {
     this.isSearching = !this.isSearching;
   }
 
-  toggleDropdown(event: Event) {
-    event.preventDefault()
-    this.isDropdownOpen = !this.isDropdownOpen;
+  toggleCatalog(state: boolean) {
+    this.isCatalogOpen = state;
   }
 }

@@ -1,8 +1,8 @@
 .head {
-  position: sticky !important;
+  position: sticky;
   top: 0;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   align-items: center;
   background-color: #e8f0ff;
   color: #3c3c3c;
@@ -15,70 +15,32 @@
   transform: translateY(-100%);
 }
 
-.logo-head a{
-  text-decoration: none;
-  color: #000000;
+.logo-head{
+  margin-left: 50px;
+  margin-right: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
 
-  &:visited{
-    text-decoration: none;
-    color: #000000;
+  .catalog {
+    margin-top: 17px;
+  }
+
+  div {
+    margin-top: auto;
+    margin-bottom: auto;
   }
 }
 
-
-.sidebar {
-  height: 100%;
-  width: 250px;
-  position: fixed;
-  top: 0;
-  left: -250px;
-  background-color: #111;
-  padding-top: 60px;
-  transition: 0.3s;
+.catalog {
+  margin-left: 15px;
+  font-size: 20px;
 }
 
-.sidebar a {
-  padding: 10px 15px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+.catalog:hover {
+  border-bottom: solid 2px #6691ff;
 }
 
-.sidebar a:hover {
-  color: #f1f1f1;
-}
-
-/* The close button */
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  background: transparent;
-  border: none;
-  color: #818181;
-  transition: 0.3s;
-}
-
-.sidebar .closebtn:hover{
-  color: #f1f1f1;
-}
-
-/* When the sidebar is active (open) */
-.sidebar.active {
-  left: 0;
-}
-
-/* Button to open the sidebar */
-.openbtn {
-  cursor: pointer;
-  border: none;
-  margin: 10px;
-  background-color: transparent;
-  padding: 0;
-}
 
 .searchbtn {
   cursor: pointer;
@@ -88,18 +50,13 @@
   padding: 0;
 }
 
-.logo-head{
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .right{
   margin-left: auto;
   margin-right: 30px;
 }
 
 .cart-icon{
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .icon-link{
@@ -118,7 +75,7 @@
 }
 
 .user-icon{
-  font-size: 40px;
+  font-size: 30px;
 }
 
 fa-icon {
@@ -133,4 +90,34 @@ fa-icon {
   width: calc(100% - 250px);
   filter: blur(5px);
   transition: filter 0.3s ease;
+}
+
+.catalog-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #e8f0ff;
+  z-index: 1000;
+  display: none;
+  width: 100%;
+  transition: display 0.3s ease;
+}
+
+.catalog:hover .catalog-dropdown {
+  display: block;
+}
+
+.catalog-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.catalog-dropdown a {
+  text-decoration: none;
+  color: #333;
+}
+
+.catalog-dropdown li {
+  margin: 5px 5px 0;
 }
