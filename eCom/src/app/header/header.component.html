@@ -1,11 +1,18 @@
-<div class="head">
+<div class="head" [class.hidden]="isHidden">
   <div>
     <div class="sidebar" [class.active]="isOpen">
       <button class="closebtn" (click)="toggleSidebar()">×</button>
       <a [routerLink]="['/home']">Home</a>
       <a [routerLink]="['/cart']">Cart</a>
-      <a href="#">Services</a>
-      <a href="#">Contact</a>
+      <div class="dropdown">
+        <a href="#">Categories<span (click)="toggleDropdown($event)">▼</span></a>
+        <div *ngIf="isDropdownOpen">
+          <div class="menu" *ngFor="let category of categories">
+            <a [routerLink]="['/categories', category.id]"> {{ category.name }}</a>
+          </div>
+        </div>
+      </div>
+      <a [routerLink]="['/brands']">Brands</a>
     </div>
 
     <button class="openbtn" (click)="toggleSidebar()">
@@ -18,11 +25,15 @@
 
   </div>
   <div class="logo-head">
-    <a [routerLink]="['/home']"><h1>eCom</h1></a>
+    <a [routerLink]="['/home']">
+      <img ngSrc="laneige-logo.svg" alt="laneige" height="32" width="181" priority>
+    </a>
   </div>
 
   <div class="right">
     <a [routerLink]="['/cart']" class="cart icon-link"><fa-icon [icon]="this.faCart" class="cart-icon"></fa-icon></a>
     <a [routerLink]="['/login']" class="user icon-link"><fa-icon [icon]="this.faUser" class="user-icon"></fa-icon></a>
   </div>
+
+  <div (click)="toggleSidebar()" class="blur" *ngIf="isOpen"></div>
 </div>

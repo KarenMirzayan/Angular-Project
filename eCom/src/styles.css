@@ -47,3 +47,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   left: 120%;
   transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
 }
+
+.noscroll {
+  overflow: hidden;
+}

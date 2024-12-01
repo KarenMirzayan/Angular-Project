@@ -1,7 +1,18 @@
 .head {
+  position: sticky !important;
+  top: 0;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
+  background-color: #e8f0ff;
+  color: #3c3c3c;
+  width: 100%;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.head.hidden {
+  transform: translateY(-100%);
 }
 
 .logo-head a{
@@ -108,4 +119,18 @@
 
 .user-icon{
   font-size: 40px;
+}
+
+fa-icon {
+  color: #3c3c3c;
+}
+
+.blur {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  height: 100%;
+  width: calc(100% - 250px);
+  filter: blur(5px);
+  transition: filter 0.3s ease;
 }
