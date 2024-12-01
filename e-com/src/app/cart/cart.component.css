@@ -16,6 +16,11 @@ p {
   margin: 0;
 }
 
+.summary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .empty-cart {
   text-align: center;
   margin-top: 50px;
