@@ -1,0 +1,30 @@
+<div class="product">
+    <div class="product__image">
+        <a>
+            <img src="{{product.image}}">
+        </a>
+    </div>
+    <div class="product__details">
+        <div class="product-details__header">
+            
+                <h2 class="product-details__title">
+                    <a> {{ product.name}} </a>
+                </h2>
+        </div>
+        <div class="product-details__add">
+            <button>
+                <span> {{ product.price }} </span>
+                <span>|</span>
+                Add to cart
+            </button>
+        </div>
+        <div class="product-details__footer">
+            <div class="product-details__rating">
+
+            </div>
+            <div class="product-details__reviews">
+                {{ product.reviews }}
+            </div>
+        </div>
+    </div>
+</div>
