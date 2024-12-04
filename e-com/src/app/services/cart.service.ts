@@ -2,8 +2,8 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { CartItem } from './cart-item.model';
-import { Item } from './home/items';
+import { CartItem } from '../cart-item.model';
+import { Item } from '../home/items';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class CartService {
     if (itemIndex === -1) {
       currentCart.push(
         {
-          item: item, 
+          item: item,
           quantity: 1
         });
       } else {
@@ -37,5 +37,5 @@ export class CartService {
   updateCart(cartItems: CartItem[]) {
     this.cartItems.next(cartItems);
   }
-  
+
 }

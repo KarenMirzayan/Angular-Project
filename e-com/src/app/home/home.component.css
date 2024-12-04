@@ -1,68 +1,68 @@
-.home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/*.home {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*}*/
 
-.items {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 50px;
-  grid-row-gap: 100px;
-  grid-auto-columns: 200px;
-}
+/*.items {*/
+/*  display: grid;*/
+/*  grid-template-columns: repeat(5, 1fr);*/
+/*  grid-gap: 50px;*/
+/*  grid-row-gap: 100px;*/
+/*  grid-auto-columns: 200px;*/
+/*}*/
 
-p {
-  margin: 0;
-  padding: 0;
-}
+/*p {*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*}*/
 
-.card {
-  height: 500px;
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/*.card {*/
+/*  height: 500px;*/
+/*  width: 200px;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*}*/
 
-.image {
-  border-radius: 10px;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-}
+/*.image {*/
+/*  border-radius: 10px;*/
+/*  width: 150px;*/
+/*  height: 150px;*/
+/*  object-fit: cover;*/
+/*}*/
 
-.reviews {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0;
-}
+/*.reviews {*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*  margin: 10px 0;*/
+/*}*/
 
-.card-name {
-  font-size: 2.2rem;
-}
+/*.card-name {*/
+/*  font-size: 2.2rem;*/
+/*}*/
 
-.card-category {
-  font-size: 1.5rem;
-  margin: 10px 0;
-}
+/*.card-category {*/
+/*  font-size: 1.5rem;*/
+/*  margin: 10px 0;*/
+/*}*/
 
-.card-description {
-  font-size: 1.2rem;
-  text-align: center;
-  margin: 15px 0;
-}
+/*.card-description {*/
+/*  font-size: 1.2rem;*/
+/*  text-align: center;*/
+/*  margin: 15px 0;*/
+/*}*/
 
-.card-price {
-  font-size: 1.8rem;
-  margin: 10px 0;
-}
+/*.card-price {*/
+/*  font-size: 1.8rem;*/
+/*  margin: 10px 0;*/
+/*}*/
 
-.btn-text {
-  font-size: 0.7rem;
-  font-weight: 600;
-}
+/*.btn-text {*/
+/*  font-size: 0.7rem;*/
+/*  font-weight: 600;*/
+/*}*/
 
-.bolder-text {
-  font-weight: 520;
-}
+/*.bolder-text {*/
+/*  font-weight: 520;*/
+/*}*/

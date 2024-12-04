@@ -6,16 +6,19 @@ import { CartComponent } from './cart/cart.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductSectionComponent } from './product-section/product-section.component';
+import {SwUpdate, VersionReadyEvent} from "@angular/service-worker";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {filter} from "rxjs";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet, 
-    HeaderComponent, 
-    FooterComponent, 
-    CartComponent, 
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    CartComponent,
     CategoryListComponent,
     ProductSectionComponent
   ],
@@ -24,4 +27,15 @@ import { ProductSectionComponent } from './product-section/product-section.compo
 })
 export class AppComponent {
   title = 'eCom';
+
+  constructor(swUpdate: SwUpdate, snackbar: MatSnackBar) {
+    swUpdate.versionUpdates.pipe(
+      filter((event): event is VersionReadyEvent => event.type === 'VERSION_READY')
+    ).subscribe( event => {
+      const snack = snackbar.open('New version ready', 'Reload');
+      snack.onAction().subscribe(() => {
+        swUpdate.activateUpdate().then(() => window.location.reload());
+      });
+    });
+  }
 }
