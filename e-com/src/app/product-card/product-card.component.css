@@ -47,7 +47,7 @@
         letter-spacing: 0;
         color: #777770;
 }
-.product-details__add 
+.product-details__add
 button {
     height: 40px;
     background-color: #fff;
@@ -58,7 +58,7 @@ button {
     padding: 0 28px;
     text-transform: uppercase;
     width: 100%;
-    
+
 }
 
 .product-details__footer {
@@ -71,4 +71,5 @@ button {
     font-size: 12px;
     color: #777770;
     text-decoration: underline;
+    cursor: default;
 }

@@ -15,9 +15,10 @@
         (mouseenter)="toggleCatalog(true)"
         (mouseleave)="toggleCatalog(false)">
         <ul>
-          <li><a href="#">Item 1</a></li>
-          <li><a href="#">Item 2</a></li>
-          <li><a href="#">Item 3</a></li>
+          <li><a [routerLink]="['all-products']">All Products</a></li>
+          <li *ngFor="let category of categories">
+            <a [routerLink]="['/categories', category.id]" target="_top">{{ category.name }}</a>
+          </li>
         </ul>
       </div>
     </a>

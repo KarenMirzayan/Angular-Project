@@ -1,10 +1,9 @@
 <div class="product-list">
-    <h1>All Products</h1>
-    <div class="product-grid">
-      <app-product-card
-        *ngFor="let product of products$ | async"
-        [product]="product">
-      </app-product-card>
-    </div>
+  <h1>{{ this.category }}</h1>
+  <div class="product-grid">
+    <app-product-card
+      *ngFor="let product of products$ | async"
+      [product]="product">
+    </app-product-card>
   </div>
-  
+</div>

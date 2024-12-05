@@ -5,6 +5,7 @@ import {RouterLink} from "@angular/router";
 import {faBarsStaggered, faMagnifyingGlass, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faUserCircle} from "@fortawesome/free-regular-svg-icons";
+import {Category, CategoryService} from "../services/category.service";
 
 @Component({
   selector: 'app-header',
@@ -33,6 +34,12 @@ export class HeaderComponent {
 
   isHidden= false;
   private lastScrollTop=0;
+
+  categories: Category[] = []
+
+  constructor(private catService: CategoryService) {
+    this.getCategories()
+  }
 
   @HostListener('window:scroll', [])
     onWindowScroll() {
@@ -73,5 +80,11 @@ export class HeaderComponent {
 
   toggleCatalog(state: boolean) {
     this.isCatalogOpen = state;
+  }
+
+  getCategories() {
+    this.catService.getCategories().subscribe((list) => {
+      this.categories = list;
+    })
   }
 }
