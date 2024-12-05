@@ -8,6 +8,7 @@ import { environment } from './environments/environment';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 import { provideServiceWorker } from '@angular/service-worker';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -17,6 +18,8 @@ bootstrapApplication(AppComponent, {
             enabled: !isDevMode(),
             registrationStrategy: 'registerWhenStable:30000'
           }), 
+        provideAuth(() => getAuth()), 
+
 
   ]
 })

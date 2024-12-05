@@ -19,5 +19,7 @@ export const appConfig: ApplicationConfig = {
         "authDomain": "angular-final-8779b.firebaseapp.com",
         "messagingSenderId": "859870271830",
         "measurementId": "G-SGECXJ5C7L"
-      })), provideAuth(() => getAuth()), provideFirestore(() => getFirestore())]
+      })), 
+      provideAuth(() => getAuth()), 
+      provideFirestore(() => getFirestore())]
 };
