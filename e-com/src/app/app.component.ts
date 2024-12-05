@@ -9,6 +9,7 @@ import { ProductSectionComponent } from './product-section/product-section.compo
 import {SwUpdate, VersionReadyEvent} from "@angular/service-worker";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {filter} from "rxjs";
+import { AddIdsComponent } from './add-ids/add-ids.component';
 
 
 @Component({
@@ -20,7 +21,8 @@ import {filter} from "rxjs";
     FooterComponent,
     CartComponent,
     CategoryListComponent,
-    ProductSectionComponent
+    ProductSectionComponent,
+    AddIdsComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

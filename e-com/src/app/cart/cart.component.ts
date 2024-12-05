@@ -3,6 +3,7 @@ import { CartItem } from '../cart-item.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { CartService } from '../services/cart.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -15,54 +16,96 @@ export class CartComponent implements OnInit{
   cartItems: CartItem[] = [];
   selectedItems: boolean[] = [];
   selectAll: boolean = false;
-  constructor(private cartService: CartService) {}
+  userId: string | null = null;
+
+  constructor(
+    private cartService: CartService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    this.cartService.getCartItems().subscribe((items) => {
-      console.log('Cart items:', items);
-      this.cartItems = items;
-      if (this.selectedItems.length == 0) {
+    this.userId = this.authService.getUserId();
+    if (this.userId) {
+       this.loadCart();
+    } 
+  }
+
+  async loadCart() {
+    if (this.userId) {
+      try {
+        const cart = await this.cartService.getCart(this.userId);
+        this.cartItems = cart?.items || [];
+
+        for (const cartItem of this.cartItems) {
+          const product = await this.cartService.getProductById(cartItem.productId);
+          if (product) {
+            cartItem.product = product;
+          }
+        }
         this.selectedItems = new Array(this.cartItems.length).fill(false);
+      } catch (error) {
+        console.log('Error loading cart', error);
       }
-      console.log(this.cartItems);
-    });
-  }
-
-  increaseQuantity(cartItem: CartItem) {
-    this.cartService.addToCart(cartItem.item);
-  }
-
-  decreaseQuantity(cartItem: CartItem) {
-    if (cartItem.quantity > 1) {
-      cartItem.quantity--;
-    } else {
-      this.removeItem(cartItem);
     }
-    this.cartService.updateCart(this.cartItems);
+    
   }
 
-  removeItem(cartItem: CartItem) {
-    this.cartItems = this.cartItems.filter((item) => item !== cartItem);
-    this.cartService.updateCart(this.cartItems);
+  async increaseQuantity(cartItem: CartItem) {
+    if (this.userId) {
+      try {
+        await this.cartService.addItemToCart(this.userId, cartItem.productId, 1);
+        this.loadCart();
+      } catch (error) {
+        console.log('Error increasing quantity', error)
+      }
+    }
+  }
+
+  async decreaseQuantity(cartItem: { productId: string; quantity: number }) {
+    if (!this.userId) return;
+
+    try {
+      if (cartItem.quantity > 1) {
+        await this.cartService.addItemToCart(this.userId, cartItem.productId, -1);
+      } else {
+        this.removeItem(cartItem);
+      }
+      this.loadCart(); // Reload cart to update state
+    } catch (error) {
+      console.error('Error decreasing quantity:', error);
+    }
+  }
+
+  async removeItem(cartItem: { productId: string; quantity: number }) {
+    if (!this.userId) return;
+
+    try {
+      await this.cartService.removeItemFromCart(this.userId, cartItem.productId);
+      this.loadCart(); // Reload cart to update state
+    } catch (error) {
+      console.error('Error removing item:', error);
+    }
   }
 
   getTotalPrice() {
     return this.cartItems.reduce(
-      (total, cartItem) => total + cartItem.item.price * cartItem.quantity,
+      (total, cartItem) => total + (cartItem.product?.price || 0) * cartItem.quantity,
       0
-    );
+    )
   }
 
-  toggleSelectAll(event: Event) {
+  toggleSelectAll() {
     this.selectedItems.fill(this.selectAll);
   }
 
   getSelectedTotalPrice() {
-    return this.cartItems.reduce((total, cartItem, index) => {
-      if (this.selectedItems[index]) {
-        return total + cartItem.item.price * cartItem.quantity;
-      }
-      return total;
-    }, 0);
+    return this.cartItems.reduce(
+      (total, cartItem, index) => {
+        if (this.selectedItems[index]) {
+          return total + (cartItem.product?.price || 0) * cartItem.quantity;
+        }
+        return total;
+      }, 0
+    )
   }
 }

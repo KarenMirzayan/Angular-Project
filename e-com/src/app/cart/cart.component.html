@@ -12,7 +12,7 @@
       <input
         type="checkbox"
         [(ngModel)]="selectAll"
-        (change)="toggleSelectAll($event)"
+        (change)="toggleSelectAll()"
       />
       <label>Select All</label>
     </div>
@@ -32,8 +32,8 @@
 
       <!-- Item Info (Image, Name, Price) -->
       <div class="item-info">
-        <p class="item-name">{{ cartItem.item.name }}</p>
-        <p class="item-price">{{ cartItem.item.price }}$</p>
+        <p class="item-name">{{ cartItem.product?.name }}</p>
+        <p class="item-price">{{ cartItem.product?.price }}$</p>
       </div>
 
       <!-- Quantity Adjuster -->
@@ -45,7 +45,13 @@
 
       <!-- Total Price for Item -->
       <div class="item-total">
-        <p>{{ cartItem.item.price * cartItem.quantity }}$</p>
+        <div *ngIf="cartItem.product; else loading">
+          <p>{{ cartItem.product.price * cartItem.quantity }}$</p>
+        </div>
+        <ng-template #loading>
+          <p>Loading...</p>
+        </ng-template>
+        
       </div>
 
       <!-- Delete Item Button -->

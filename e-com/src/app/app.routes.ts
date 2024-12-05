@@ -11,4 +11,5 @@ export const routes: Routes = [
   { path: 'all-products', component: ProductListComponent},
   { path: 'categories/:id', component: ProductListComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+
 ];
