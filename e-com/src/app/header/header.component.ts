@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {CommonModule, NgClass, NgOptimizedImage} from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {faHeart, faBarsStaggered, faMagnifyingGlass, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
@@ -12,7 +12,6 @@ import { AuthService } from '../services/auth.service';
   selector: 'app-header',
   standalone: true,
   imports: [
-    NgClass,
     NgOptimizedImage,
     FormsModule,
     RouterLink,
@@ -86,10 +85,6 @@ export class HeaderComponent implements OnInit {
       document.body.classList.remove('noscroll');
     }
   }
-
-  // openSearch() {
-  //   this.isSearching = !this.isSearching;
-  // }
 
   toggleCatalog(state: boolean) {
     this.isCatalogOpen = state;

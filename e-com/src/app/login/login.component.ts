@@ -10,9 +10,9 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   imports: [
-    CommonModule,         // Provides *ngIf, *ngFor, etc.
-    ReactiveFormsModule,  // Provides [formGroup] and form controls
-    RouterModule          // Provides [routerLink]
+    CommonModule,       
+    ReactiveFormsModule,  
+    RouterModule          
   ],
 })
 export class LoginComponent implements OnInit {
