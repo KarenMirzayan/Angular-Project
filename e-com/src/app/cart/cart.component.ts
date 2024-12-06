@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { CartService } from '../services/cart.service';
 import { AuthService } from '../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -18,19 +19,26 @@ export class CartComponent implements OnInit{
   selectAll: boolean = false;
   userId: string | null = null;
 
+  private subscriptions: Subscription = new Subscription();
+
   constructor(
     private cartService: CartService,
     private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.userId = this.authService.getUserId();
+    const userIdSubscription = this.authService.userId$.subscribe((userId) => {
+      this.userId = userId;
+    })
+    this.subscriptions.add(userIdSubscription);
+    console.log(this.userId);
     if (this.userId) {
        this.loadCart();
     } 
   }
 
   async loadCart() {
+
     if (this.userId) {
       try {
         const cart = await this.cartService.getCart(this.userId);

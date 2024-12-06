@@ -88,9 +88,23 @@ p {
 
 .item-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 12px;
 }
 
+.item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.item-photo {
+  height: auto;
+}
+.item-photo img {
+  border-radius: 8px;
+width: 88px;}
 .item-name {
   font-size: 16px;
   color: #000;

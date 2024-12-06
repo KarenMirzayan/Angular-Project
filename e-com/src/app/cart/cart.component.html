@@ -32,8 +32,13 @@
 
       <!-- Item Info (Image, Name, Price) -->
       <div class="item-info">
-        <p class="item-name">{{ cartItem.product?.name }}</p>
-        <p class="item-price">{{ cartItem.product?.price }}$</p>
+        <div class="item-photo">
+          <img src="{{ cartItem.product?.image }}">
+        </div>
+        <div class="item-details">
+          <p class="item-name">{{ cartItem.product?.name }}</p>
+          <p class="item-price">{{ cartItem.product?.price }}$</p>
+        </div>
       </div>
 
       <!-- Quantity Adjuster -->

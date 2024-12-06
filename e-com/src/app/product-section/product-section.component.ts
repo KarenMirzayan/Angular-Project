@@ -11,37 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductSectionComponent {
   products = [
-    {
-      image: '//us.laneige.com/cdn/shop/files/Product_01_9129acd1-a5ce-46e2-9d30-bbd77479f839.jpg?v=1724612072&width=672',
-      name: 'Hydrating Facial Cream',
-      price: 2.5,
-      reviews: '45 Reviews',
-      rating: 4.5,
-    },
-    {
-      image: '//us.laneige.com/cdn/shop/files/Product_02.jpg',
-      name: 'Water Bank Moisture Cream',
-      reviews: '30 Reviews',
-      rating: 4.7,
-    },
-    {
-      image: '//us.laneige.com/cdn/shop/files/Product_03.jpg',
-      name: 'Lip Sleeping Mask',
-      reviews: '60 Reviews',
-      rating: 4.8,
-    },
-    {
-      image: '//us.laneige.com/cdn/shop/files/Product_04.jpg',
-      name: 'Brightening Serum',
-      reviews: '25 Reviews',
-      rating: 4.6,
-    },
-    {
-      image: '//us.laneige.com/cdn/shop/files/Product_05.jpg',
-      name: 'Soothing Gel Cream',
-      reviews: '18 Reviews',
-      rating: 4.3,
-    },
+    
   ];
 
   // Pagination properties
