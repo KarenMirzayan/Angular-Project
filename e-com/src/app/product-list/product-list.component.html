@@ -4,8 +4,8 @@
     <app-product-card
       *ngFor="let product of products$ | async"
       [product]="product"
-      [isFavorite]="isFavorite(product.productId)"
-      (toggleFavorite)="toggleFavorite(product.productId)">
+      [isFavorite]="isFavorite(product.id)"
+      (toggleFavorite)="toggleFavorite(product.id)">
     </app-product-card>
   </div>
 </div>

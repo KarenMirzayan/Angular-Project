@@ -33,6 +33,7 @@
       </button>
       <a [routerLink]="['/cart']" class="cart icon-link"><fa-icon [icon]="this.faCart" class="cart-icon"></fa-icon></a>
       <a [routerLink]="['/login']" class="user icon-link"><fa-icon [icon]="this.faUser" class="user-icon"></fa-icon></a>
+      <a [routerLink]="['/wishlist']">Wishlist</a>
     </div>
 
     <div (click)="toggleSidebar()" class="blur" *ngIf="isOpen"></div>

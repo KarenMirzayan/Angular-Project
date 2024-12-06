@@ -3,7 +3,9 @@
   <div class="product-section__cards">
     <app-product-card
       *ngFor="let product of visibleProducts"
-      [product]="product">
+      [product]="product"
+      [isFavorite]="isFavorite(product.id)"
+      (toggleFavorite)="toggleFavorite(product.id)">
     </app-product-card>
   </div>
   <div class="pagination-controls">
@@ -13,6 +15,6 @@
       [disabled]="startIndex + itemsPerPage >= products.length">
       Next →
     </button>
-    
+
   </div>
 </div>

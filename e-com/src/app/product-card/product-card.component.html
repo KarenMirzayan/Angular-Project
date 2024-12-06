@@ -1,6 +1,6 @@
 <div class="product">
   <div class="product-favorites__div">
-    <button (click)="onToggleFavorite()" class="product-favorite__button">
+    <button (click)="onToggleFavorite()" class="product-favorites__button">
       <fa-icon [icon]="this.faFilledHeart" *ngIf="this.isFavorite"></fa-icon>
       <fa-icon [icon]="this.faEmptyHeart" *ngIf="!this.isFavorite"></fa-icon>
     </button>

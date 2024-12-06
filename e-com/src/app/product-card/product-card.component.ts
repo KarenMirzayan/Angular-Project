@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {StarsComponent} from "../stars/stars.component";
 import { CategoryService } from '../services/category.service';
 import { CartService } from '../services/cart.service';
@@ -9,6 +9,7 @@ import {faHeart} from "@fortawesome/free-regular-svg-icons";
 import {faHeart as faFilledHeart} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {CommonModule} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-card',
@@ -21,7 +22,7 @@ import {CommonModule} from "@angular/common";
   ],
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent implements OnInit, OnDestroy {
   faEmptyHeart = faHeart
   faFilledHeart = faFilledHeart
 
@@ -35,7 +36,7 @@ export class ProductCardComponent implements OnInit {
     rating: 0,
     reviews: 0,
   };
-  @Input() isFavorite: boolean = false;
+  @Input() isFavorite: boolean | null = false;
   @Output() toggleFavorite: EventEmitter<any> = new EventEmitter();
   categoryName: string | null = null; // To store the category name
   userId: string | null = null;
@@ -44,7 +45,8 @@ export class ProductCardComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +71,8 @@ export class ProductCardComponent implements OnInit {
         console.error('Error adding to cart:', error);
         alert('Failed to add to cart. Please try again later.');
       }
+    }else {
+      this.router.navigate(['/login']).then()
     }
 
   }
