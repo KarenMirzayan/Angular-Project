@@ -1,7 +1,7 @@
 .carousel-container {
   position: relative;
   overflow: hidden;
-  width: 1000px;
+  width: 90%;
   margin: 0 auto;
   border-radius: 20px;
 }
@@ -28,7 +28,9 @@
   position: relative;
   height: 650px;
   overflow-y: hidden;
-  width: 1550px;
+  width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .button-scroll {
