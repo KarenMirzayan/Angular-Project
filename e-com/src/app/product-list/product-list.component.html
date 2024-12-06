@@ -3,7 +3,9 @@
   <div class="product-grid">
     <app-product-card
       *ngFor="let product of products$ | async"
-      [product]="product">
+      [product]="product"
+      [isFavorite]="isFavorite(product.productId)"
+      (toggleFavorite)="toggleFavorite(product.productId)">
     </app-product-card>
   </div>
 </div>

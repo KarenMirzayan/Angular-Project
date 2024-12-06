@@ -13,7 +13,7 @@ export class AuthService {
   private userIdSubject = new BehaviorSubject<string | null>(null); // State management for user ID
   userId$ = this.userIdSubject.asObservable();
 
-  private userId: string | null = null; 
+  private userId: string | null = null;
 
   constructor(private auth: Auth, private firestore: Firestore) {
     // Initialize user ID on service creation
@@ -71,10 +71,15 @@ export class AuthService {
   }
 
   // Get the current authenticated user's ID
-  getUserId(): string | null {
-    return this.userId;
+  getUserId(): string {
+    if(this.userId) {
+      return this.userId;
+    }
+    else{
+      return ''
+    }
   }
-  
+
   // Get auth state
   isAuthenticated(): Observable<boolean> {
     return this.isAuth$;

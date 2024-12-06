@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { CartItem } from '../cart-item.model';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
 import { CartService } from '../services/cart.service';
 import { AuthService } from '../services/auth.service';
 
@@ -27,7 +27,7 @@ export class CartComponent implements OnInit{
     this.userId = this.authService.getUserId();
     if (this.userId) {
        this.loadCart();
-    } 
+    }
   }
 
   async loadCart() {
@@ -47,7 +47,7 @@ export class CartComponent implements OnInit{
         console.log('Error loading cart', error);
       }
     }
-    
+
   }
 
   async increaseQuantity(cartItem: CartItem) {

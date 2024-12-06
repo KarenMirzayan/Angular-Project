@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     padding: 12px;
-
+    position: relative;
 }
 
 .product__image {
@@ -72,4 +72,11 @@ button {
     color: #777770;
     text-decoration: underline;
     cursor: default;
+}
+
+.product-favorites__div {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
 }
