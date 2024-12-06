@@ -1,33 +1,39 @@
 <div class="product">
-    <div class="product__image">
-        <a>
-            <img src="{{product.image}}">
-        </a>
-    </div>
-    <div class="product__details">
-        <div class="product-details__header">
+  <div class="product-favorites__div">
+    <button (click)="onToggleFavorite()" class="product-favorite__button">
+      <fa-icon [icon]="this.faFilledHeart" *ngIf="this.isFavorite"></fa-icon>
+      <fa-icon [icon]="this.faEmptyHeart" *ngIf="!this.isFavorite"></fa-icon>
+    </button>
+  </div>
+  <div class="product__image">
+    <a>
+      <img src="{{product.image}}" [alt]="product.name">
+    </a>
+  </div>
+  <div class="product__details">
+    <div class="product-details__header">
 
-                <h2 class="product-details__title">
-                    <a> {{ product.name}} </a>
-                </h2>
-                <h3 class="product-details__category">
-                    <a>{{categoryName}}</a>
-                </h3>
-        </div>
-        <div class="product-details__add">
-            <button (click)="addToCart()">
-                <span> ${{ product.price }} </span>
-                <span>|</span>
-                Add to cart
-            </button>
-        </div>
-        <div class="product-details__footer">
-            <div class="product-details__rating">
-              <app-stars [stars]="product.rating"></app-stars>
-            </div>
-            <div class="product-details__reviews">
-                {{ product.reviews }} reviews
-            </div>
-        </div>
+      <h2 class="product-details__title">
+        <a> {{ product.name }} </a>
+      </h2>
+      <h3 class="product-details__category">
+        <a>{{ categoryName }}</a>
+      </h3>
     </div>
+    <div class="product-details__add">
+      <button (click)="addToCart()">
+        <span> ${{ product.price }} </span>
+        <span>|</span>
+        Add to cart
+      </button>
+    </div>
+    <div class="product-details__footer">
+      <div class="product-details__rating">
+        <app-stars [stars]="product.rating"></app-stars>
+      </div>
+      <div class="product-details__reviews">
+        {{ product.reviews }} reviews
+      </div>
+    </div>
+  </div>
 </div>

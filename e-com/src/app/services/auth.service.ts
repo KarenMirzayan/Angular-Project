@@ -17,7 +17,7 @@ export class AuthService {
   userDetails$ = this.userDetailsSubject.asObservable();
 
 
-  private userId: string | null = null; 
+  private userId: string | null = null;
 
   constructor(private auth: Auth, private firestore: Firestore) {
     // Initialize user ID on service creation
@@ -86,14 +86,12 @@ export class AuthService {
     this.userDetailsSubject.next(null);
   }
 
+  // Get the current authenticated user's ID
   getUserId(): string | null {
     return this.userId;
   }
   
-  getUserDetails(): { firstName: string; lastName: string } | null {
-    return this.userDetailsSubject.value;
-  }
-
+  // Get auth state
   isAuthenticated(): Observable<boolean> {
     return this.isAuth$;
   }
