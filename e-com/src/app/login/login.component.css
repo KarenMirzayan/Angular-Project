@@ -9,7 +9,6 @@
   background: #fff;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 400px;
   text-align: center;
 }
@@ -45,19 +44,14 @@ input.ng-invalid.ng-touched {
 }
 
 .error-msg {
-  height: 15px;
   color: red;
   font-size: 14px;
   margin-top: 5px;
+  text-align: left;
 }
 
 .btn {
-  background-color: #ff6423;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  width: 100%;
 }
 
 .btn:disabled {
@@ -71,8 +65,8 @@ input.ng-invalid.ng-touched {
 }
 
 .signup-link a {
-  color: #ff6423;
-  text-decoration: none;
+  color: #406ac0;
+  text-decoration: underline;
 }
 
 

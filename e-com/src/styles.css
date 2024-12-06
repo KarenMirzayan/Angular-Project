@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: rgb(265, 250, 240);
+  background-color: #f2f1f1;
   font-family: serif;
 }
 
@@ -19,7 +19,15 @@ html, body {
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.button-beauty{
+.button-primary {
+  background-color: #406ac0;
+  border-radius: 100px;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+
+}
+/* .button-beauty{
   color: rgb(255, 250, 240);
   border: none;
   border-radius: 20px;
@@ -35,7 +43,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   span {
     z-index: -20;
   }
-}
+} */
 
 .button-beauty:after {
   content: '';
