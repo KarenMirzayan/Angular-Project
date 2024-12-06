@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { CommonModule } from '@angular/common';
 import {ProductService} from "../services/product.service";
-import {Observable} from "rxjs";
 import {Product} from "../product.model";
 
 @Component({

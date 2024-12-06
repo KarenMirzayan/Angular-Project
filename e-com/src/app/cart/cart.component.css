@@ -43,10 +43,9 @@ p {
 /* Left Column (Cart Items Section) */
 .cart-items-section {
   flex: 3;
-  background-color: #f9f9f9;
+  background-color: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cart-items-section h2 {
@@ -88,9 +87,23 @@ p {
 
 .item-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 12px;
 }
 
+.item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.item-photo {
+  height: auto;
+}
+.item-photo img {
+  border-radius: 8px;
+width: 88px;}
 .item-name {
   font-size: 16px;
   color: #000;
@@ -131,7 +144,7 @@ p {
   background-color: transparent;
   border: none;
   font-size: 18px;
-  color: red;
+  color: #3c3c3c;
   cursor: pointer;
 }
 

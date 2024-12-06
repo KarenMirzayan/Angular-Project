@@ -45,7 +45,6 @@ export class ProductCardComponent implements OnInit {
     private categoryService: CategoryService,
     private cartService: CartService,
     private authService: AuthService
-
   ) {}
 
   ngOnInit(): void {
