@@ -42,9 +42,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
     const userIdSubscription = this.authService.userId$.subscribe((userId) => {
       if (userId) {
         this.userId = userId;
-        this.loadWishlist(); // Load wishlist as soon as userId is available
+        console.log(userId)
       }
     });
+    console.log(this.userId)
+    console.log("aaa")
+    this.loadWishlist();
     this.subscriptions.add(userIdSubscription);
 
     // Load products
@@ -55,6 +58,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     } else {
       this.getCategory(id);
     }
+    console.log("aaa4")
 
     this.wishlist$.subscribe((wishlist) => {
       // Map productId to isFavorite status
@@ -64,6 +68,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
         },
         {} as { [productId: string]: boolean });
     });
+    console.log(this.favoriteStatusMap)
+    console.log("aaa3")
   }
 
   getAllProducts(): void {
@@ -85,38 +91,40 @@ export class ProductListComponent implements OnInit, OnDestroy {
           return of([]); // Return an empty array if there's an error
         })
       );
+      console.log(this.wishlist$)
     }
   }
 
   toggleFavorite(productId: string): void {
-    this.wishlist$.subscribe((wishlist) => {
-      const existingFavorite = wishlist.find((item) => item.productId === productId);
+    const isAlreadyFavorite = this.favoriteStatusMap[productId] || false; // Check if the product is already in favorites
 
-      if (existingFavorite) {
-        this.favoritesService.removeItemFromFavorites(this.userId, productId).pipe(
-          catchError((error) => {
-            console.error('Error removing product from favorites:', error);
-            return of(null);
-          })
-        ).subscribe(() => {
-          this.wishlist$ = this.favoritesService.getFavorites(this.userId); // Refresh wishlist after removal
-        });
-      } else {
-        this.favoritesService.getProductById(productId).subscribe((product) => {
-          if (product) {
-            this.favoritesService.addItemToFavorites(this.userId, productId).pipe(
-              catchError((error) => {
-                console.error('Error adding product to favorites:', error);
-                return of(null);
-              })
-            ).subscribe(() => {
-              this.wishlist$ = this.favoritesService.getFavorites(this.userId); // Refresh wishlist after adding
-            });
-          }
-        });
-      }
-    });
+    if (isAlreadyFavorite) {
+      // Remove from favorites
+      this.favoritesService.removeItemFromFavorites(this.userId, productId).pipe(
+        catchError((error) => {
+          console.error('Error removing product from favorites:', error);
+          return of(null);  // Return a null observable on error
+        })
+      ).subscribe(() => {
+        // Update the status map directly
+        this.favoriteStatusMap[productId] = false;
+        console.log('Product removed from favorites');
+      });
+    } else {
+      // Add to favorites
+      this.favoritesService.addItemToFavorites(this.userId, productId).pipe(
+        catchError((error) => {
+          console.error('Error adding product to favorites:', error);
+          return of(null);  // Return a null observable on error
+        })
+      ).subscribe(() => {
+        // Update the status map directly
+        this.favoriteStatusMap[productId] = true;
+        console.log('Product added to favorites');
+      });
+    }
   }
+
 
   isFavorite(productId: string): boolean {
     return this.favoriteStatusMap[productId] || false;

@@ -3,12 +3,14 @@
   overflow: hidden;
   width: 1000px;
   margin: 0 auto;
+  border-radius: 20px;
 }
 
 .carousel {
   display: flex;
   transition: transform 0.5s ease-in-out; /* Smooth transition */
   height: 650px;
+
 }
 
 .carousel-item {
