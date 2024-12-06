@@ -59,12 +59,12 @@
 
 .icon-link:link{
   text-decoration: none;
-  color: #000000;
+  color: #406ac0;
 }
 
 .icon-link:visited{
   text-decoration: none;
-  color: #000000;
+  color: #406ac0;
 }
 
 .user-icon{
@@ -76,7 +76,7 @@
 }
 
 fa-icon {
-  color: #3c3c3c;
+  color: #406ac0;
 }
 
 .blur {

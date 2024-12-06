@@ -9,12 +9,13 @@
     </app-product-card>
   </div>
   <div class="pagination-controls">
-    <button (click)="prevPage()" [disabled]="startIndex === 0">← Previous</button>
+    <button (click)="prevPage()" [disabled]="startIndex === 0">
+      <fa-icon [icon]="faLeft"></fa-icon>    </button>
     <button
       (click)="nextPage()"
       [disabled]="startIndex + itemsPerPage >= products.length">
-      Next →
-    </button>
+      <fa-icon [icon]="faRight"></fa-icon>
+      </button>
 
   </div>
 </div>

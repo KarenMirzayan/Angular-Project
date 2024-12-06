@@ -7,11 +7,13 @@ import {catchError, Observable, of, Subscription} from "rxjs";
 import {FavoriteItem} from "../wishlist-item.model";
 import {AuthService} from "../services/auth.service";
 import {FavoritesService} from "../services/favorites.service";
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faCircleChevronLeft, faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-product-section',
   standalone: true,
-  imports: [ProductCardComponent, CommonModule],
+  imports: [ProductCardComponent, CommonModule, FaIconComponent],
   templateUrl: './product-section.component.html',
   styleUrls: ['./product-section.component.css']
 })
@@ -23,6 +25,9 @@ export class ProductSectionComponent implements OnInit, OnDestroy{
   userId: string = '';
   category: string = '';
   private subscriptions: Subscription = new Subscription();
+
+  faRight = faCircleChevronRight;
+  faLeft = faCircleChevronLeft;
 
   favoriteStatusMap: { [productId: string]: boolean } = {};
   constructor(private productService: ProductService, private authService: AuthService, private favoritesService: FavoritesService) {
