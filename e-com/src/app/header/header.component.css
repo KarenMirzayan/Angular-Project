@@ -9,6 +9,7 @@
   width: 100%;
   z-index: 1000;
   transition: transform 0.2s ease-in-out;
+  height: 50px;
 }
 
 .head.hidden {
@@ -42,14 +43,6 @@
 }
 
 
-.searchbtn {
-  cursor: pointer;
-  border: none;
-  margin: 10px;
-  background-color: transparent;
-  padding: 0;
-}
-
 .right{
   margin-left: auto;
   margin-right: 30px;
@@ -75,6 +68,10 @@
 }
 
 .user-icon{
+  font-size: 30px;
+}
+
+.wishlist-icon {
   font-size: 30px;
 }
 

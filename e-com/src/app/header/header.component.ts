@@ -2,7 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {CommonModule, NgClass, NgOptimizedImage} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
-import {faBarsStaggered, faMagnifyingGlass, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
+import {faHeart, faBarsStaggered, faMagnifyingGlass, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faUserCircle} from "@fortawesome/free-regular-svg-icons";
 import {Category, CategoryService} from "../services/category.service";
@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
   faUser = faUserCircle
   faBars = faBarsStaggered;
   faSearch = faMagnifyingGlass;
+  faWishlist = faHeart
 
   isCatalogOpen = false;
 
@@ -86,9 +87,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  openSearch() {
-    this.isSearching = !this.isSearching;
-  }
+  // openSearch() {
+  //   this.isSearching = !this.isSearching;
+  // }
 
   toggleCatalog(state: boolean) {
     this.isCatalogOpen = state;

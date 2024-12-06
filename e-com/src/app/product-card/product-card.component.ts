@@ -82,6 +82,7 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   }
 
   onToggleFavorite(): void {
+    console.log("toggled")
     this.toggleFavorite.emit();
     this.isFavorite = !this.isFavorite;
   }
