@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { CartService } from '../services/cart.service';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 })
@@ -23,7 +24,8 @@ export class CartComponent implements OnInit{
 
   constructor(
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -116,4 +118,20 @@ export class CartComponent implements OnInit{
       }, 0
     )
   }
+
+  getSelectedCartItems(): CartItem[] {
+    return this.cartItems.filter((_, index) => this.selectedItems[index]);
+  }
+  
+  proceedToCheckout(): void {
+    const selectedItems = this.getSelectedCartItems();
+    if (selectedItems.length === 0) {
+      alert('Please select at least one item for checkout.');
+      return;
+    }
+  
+    // Use routing or shared service to pass selected items
+    this.router.navigate(['/checkout'], { state: { selectedItems } });
+  }
+  
 }

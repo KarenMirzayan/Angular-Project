@@ -33,11 +33,18 @@ h1 {
 .button-primary {
   background-color: #406ac0;
   border-radius: 100px;
+  border: 1px solid #406ac0;
   color: #fff;
   padding: 12px 28px;
   cursor: pointer;
   text-align: center;
   text-transform: uppercase;
+}
+
+.button-primary:hover {
+  background-color: #fff;
+  color: #406ac0;
+  border: 1px solid #406ac0;
 }
 
 a {
