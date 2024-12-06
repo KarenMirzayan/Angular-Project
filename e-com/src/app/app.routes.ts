@@ -6,6 +6,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import {WishlistComponent} from "./wishlist/wishlist.component";
 import { AccountComponent } from './account/account.component';
 import { AddressesComponent } from './addresses/addresses.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'all-products', component: ProductListComponent},
   { path: 'categories/:id', component: ProductListComponent},
   { path: 'wishlist', component: WishlistComponent},
+  { path: 'checkout', component: CheckoutComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
 ];

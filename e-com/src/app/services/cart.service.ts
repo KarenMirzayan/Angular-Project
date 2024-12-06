@@ -71,4 +71,18 @@ export class CartService {
     }
     return null;
   }
+
+  async removeItemsFromCart(userId: string, productIds: string[]): Promise<void> {
+    const cartDocRef = doc(this.firestore, `${this.cartsCollection}/${userId}`);
+    const cartDoc = await getDoc(cartDocRef);
+
+    if (cartDoc.exists()) {
+      const cartData = cartDoc.data();
+      const updatedItems = cartData['items'].filter(
+        (item: any) => !productIds.includes(item.productId)
+      );
+
+      await updateDoc(cartDocRef, { items: updatedItems });
+    }
+  }
 }

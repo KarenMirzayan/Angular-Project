@@ -1,0 +1,58 @@
+<div class="checkout-page">
+    <h1>Checkout</h1>
+    <div class="checkout-container">
+      <!-- Left Column: Shipping Address -->
+      <div class="checkout-left">
+        <h2>Shipping Address</h2>
+        <div *ngIf="addresses.length === 0" class="empty-address">
+          <p>No addresses available. Please add one!</p>
+        </div>
+        <div *ngFor="let address of addresses" class="address-item">
+          <input
+            type="radio"
+            name="shippingAddress"
+            [value]="address.id"
+            [(ngModel)]="selectedAddressId"
+          />
+          <label>
+            <p>{{ address.address }}</p>
+            <p>{{ address.city }}, {{ address.zipCode }}</p>
+          </label>
+          
+        </div>
+        <button (click)="confirmCheckout()" class="checkout-btn button-primary">
+            Confirm Checkout
+          </button>
+
+      </div>
+  
+      <!-- Right Column: Order Summary -->
+      <div class="checkout-right">
+        <h2>Order Summary</h2>
+        <div class="order-items">
+          <div *ngFor="let item of cartItems" class="order-item">
+            <!-- Product Image -->
+            <div class="order-item-photo">
+              <img src="{{ item.product?.image }}" alt="{{ item.product?.name }}">
+            </div>
+            <!-- Product Details -->
+            <div class="order-item-details">
+              <p class="order-item-name">{{ item.product?.name }}</p>
+              <p class="order-item-quantity">Qty: {{ item.quantity }}</p>
+            </div>
+            <!-- Total Price for Each Item -->
+            <p class="order-item-total">
+              ${{ (item.product?.price || 0) * item.quantity }}
+            </p>
+          </div>
+        </div>
+        <!-- Total Price -->
+        <div class="summary">
+          <p>Total Price:</p>
+          <p>${{ totalPrice }}</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
