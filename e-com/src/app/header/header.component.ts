@@ -1,11 +1,12 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {CommonModule, NgClass, NgOptimizedImage} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {faBarsStaggered, faMagnifyingGlass, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faUserCircle} from "@fortawesome/free-regular-svg-icons";
 import {Category, CategoryService} from "../services/category.service";
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -21,8 +22,9 @@ import {Category, CategoryService} from "../services/category.service";
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   isOpen = false;
+  isAuth = false;
   faCart = faShoppingCart;
   faUser = faUserCircle
   faBars = faBarsStaggered;
@@ -37,8 +39,18 @@ export class HeaderComponent {
 
   categories: Category[] = []
 
-  constructor(private catService: CategoryService) {
+  constructor(
+    private catService: CategoryService,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.getCategories()
+  }
+
+  ngOnInit(): void {
+      this.authService.isAuth$.subscribe((authStatus) => {
+        this.isAuth = authStatus;
+      })
   }
 
   @HostListener('window:scroll', [])
@@ -86,5 +98,13 @@ export class HeaderComponent {
     this.catService.getCategories().subscribe((list) => {
       this.categories = list;
     })
+  }
+
+  navigateUser() {
+    if (this.isAuth) {
+      this.router.navigate(['/account']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }

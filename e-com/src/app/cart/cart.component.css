@@ -123,6 +123,7 @@ width: 88px;}
 .item-quantity button {
   width: 30px;
   height: 30px;
+  border-radius: 8px;
   background-color: #ddd;
   border: none;
   cursor: pointer;
@@ -166,35 +167,9 @@ width: 88px;}
 .checkout-btn {
   display: block;
   width: 100%;
-  padding: 10px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
   font-size: 16px;
-  margin-top: 20px;
-  text-align: center;
 }
 
 .checkout-btn:hover {
   background-color: #218838;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .cart-page-container {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .cart-headers,
-  .cart-item {
-    grid-template-columns: 0.5fr 1.5fr 1fr 1fr 0.2fr;
-  }
-
-  .order-summary-section {
-    margin-top: 20px;
-    margin-right: 20px;
-  }
 }

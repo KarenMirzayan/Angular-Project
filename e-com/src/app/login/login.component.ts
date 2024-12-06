@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,11 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup; // Reactive form for login
   errorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder, 
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     // Initialize the form with validation
@@ -47,7 +51,7 @@ export class LoginComponent implements OnInit {
     try {
       await this.authService.login(email, password);
       this.errorMessage = null; // Clear any previous errors
-      console.log('Login successful');
+      this.router.navigate(['/']);
     } catch (error: any) {
       this.errorMessage = error.message; // Display error to the user
     }

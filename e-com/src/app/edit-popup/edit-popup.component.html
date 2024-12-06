@@ -1,0 +1,24 @@
+<div class="popup-overlay" (click)="closePopup()"></div>
+<div class="popup-content">
+  <h2>Edit Personal Information</h2>
+  <form [formGroup]="editForm" (ngSubmit)="saveChanges()">
+    <div>
+      <label for="firstName">First Name</label>
+      <input id="firstName" formControlName="firstName" />
+      <div *ngIf="editForm.get('firstName')?.invalid && editForm.get('firstName')?.touched">
+        First Name is required.
+      </div>
+    </div>
+    <div>
+      <label for="lastName">Last Name</label>
+      <input id="lastName" formControlName="lastName" />
+      <div *ngIf="editForm.get('lastName')?.invalid && editForm.get('lastName')?.touched">
+        Last Name is required.
+      </div>
+    </div>
+    <div class="popup-actions">
+      <button type="button" (click)="closePopup()">Cancel</button>
+      <button type="submit" [disabled]="editForm.invalid">Save</button>
+    </div>
+  </form>
+</div>

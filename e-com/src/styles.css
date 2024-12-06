@@ -25,7 +25,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: #fff;
   padding: 10px 20px;
   cursor: pointer;
-
+  text-align: center;
+  text-transform: uppercase;
 }
 /* .button-beauty{
   color: rgb(255, 250, 240);

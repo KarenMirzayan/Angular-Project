@@ -1,0 +1,21 @@
+<div class="account-page">
+    <h1>Account</h1>
+  
+    <!-- Personal Information Section -->
+    <section class="personal-info">
+      <h2>Personal Information</h2>
+      <p>{{ firstName }}</p>
+      <p>{{ lastName }}</p>
+      <button (click)="openEditPopup()">Edit</button>
+    </section>
+  
+    <!-- Popup Form -->
+    <app-edit-popup
+      *ngIf="isPopupVisible"
+      [firstName]="firstName"
+      [lastName]="lastName"
+      (close)="closeEditPopup()"
+      (update)="updatePersonalDetails($event)">
+    </app-edit-popup>
+  </div>
+  
