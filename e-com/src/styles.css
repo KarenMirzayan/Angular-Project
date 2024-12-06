@@ -27,9 +27,17 @@ h1 {
   font-size: 36px;
     font-weight: 600;
     line-height: 1;
-    letter-spacing: 0;
     margin-bottom: 24px;
 }
+
+h2 {
+  font-size: 24px;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 18px;
+
+}
+
 .button-primary {
   background-color: #406ac0;
   border-radius: 100px;

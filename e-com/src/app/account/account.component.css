@@ -1,26 +1,68 @@
 .account-page {
     padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
+  }
+  
+  .account-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+  }
+  
+  .recent-orders, .personal-info {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .recent-orders h2, .personal-info h2 {
+    margin-bottom: 20px;
+  }
+  
+  .order-card {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .order-card:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  
+  .order-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .order-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .order-item img {
+    width: 96px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .empty-orders {
+    text-align: center;
+    font-size: 16px;
+    color: #555;
   }
   
   .personal-info {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    height: fit-content;
   }
   
-  button {
+  .personal-info a {
+    display: block;
     margin-top: 10px;
-    padding: 10px 20px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
+    color: #406ac0;
     cursor: pointer;
-  }
-  
-  button:hover {
-    background: #0056b3;
+    text-decoration: underline;
   }
   

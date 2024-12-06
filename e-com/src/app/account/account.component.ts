@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { OrderService } from '../services/orders.service';
+import { Order } from '../order.model';
 import { CommonModule } from '@angular/common';
 import { EditPopupComponent } from '../edit-popup/edit-popup.component';
 import { RouterLink } from '@angular/router';
@@ -13,24 +15,42 @@ import { RouterLink } from '@angular/router';
     RouterLink
   ],
   templateUrl: './account.component.html',
-  styleUrl: './account.component.css'
+  styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
   firstName: string = "";
   lastName: string = "";
   isPopupVisible: boolean = false;
+  orders: Order[] = [];
+  userId: string | null = null;
 
-  constructor (
-    private authService: AuthService
+  constructor(
+    private authService: AuthService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
+    // Fetch user details
     this.authService.userDetails$.subscribe((personalDetails) => {
       if (personalDetails) {
         this.firstName = personalDetails.firstName;
         this.lastName = personalDetails.lastName;
       }
-    })
+    });
+
+    // Fetch user ID and orders
+    this.authService.userId$.subscribe((id) => {
+      this.userId = id;
+      if (this.userId) {
+        this.loadOrders();
+      }
+    });
+  }
+
+  async loadOrders(): Promise<void> {
+    if (this.userId) {
+      this.orders = await this.orderService.getOrdersByUser(this.userId);
+    }
   }
 
   openEditPopup(): void {
@@ -41,13 +61,8 @@ export class AccountComponent implements OnInit {
     this.isPopupVisible = false;
   }
 
-  updatePersonalDetails(
-    updatedDetails: {
-      firstName: string,
-      lastName:string
-    }): void {
-      this.firstName = updatedDetails.firstName;
-      this.lastName = updatedDetails.lastName;
-    }
-
+  updatePersonalDetails(updatedDetails: { firstName: string, lastName: string }): void {
+    this.firstName = updatedDetails.firstName;
+    this.lastName = updatedDetails.lastName;
+  }
 }
