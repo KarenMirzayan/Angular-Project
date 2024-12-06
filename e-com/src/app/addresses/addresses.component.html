@@ -1,0 +1,41 @@
+<div class="addresses-page">
+    <h1>Your Addresses</h1>
+    <p class="to-account">
+        <a  [routerLink]="['/account']">
+            Return to Account Details
+        </a>
+    </p>
+
+    <button class="add-address button-primary" (click)="openAddAddressPopup()">
+        Add a new address
+    </button>
+    <div *ngIf="addresses.length === 0">
+      <p>No addresses found. Add your first address!</p>
+    </div>
+    <div class="address-cards">
+        <div *ngFor="let address of addresses" class="address-card">
+        <div class="address">
+            <p><strong></strong> {{ address.address }}</p>
+            <p><strong></strong> {{ address.city }}</p>
+            <p><strong></strong> {{ address.zipCode }}</p>
+        </div>
+      
+      <div class="address-card__actions">
+        <a (click)="openEditAddressPopup(address)">
+            Edit
+        </a>
+        <a (click)="deleteAddress(address.id!)">
+            Delete
+        </a>
+      </div>
+    </div>
+    </div>
+    <app-add-address-popup
+    *ngIf="isPopupVisible"
+    [address]="editingAddress"
+    (close)="closePopup()"
+    (save)="saveAddress($event)">
+  </app-add-address-popup>
+    
+  </div>
+  

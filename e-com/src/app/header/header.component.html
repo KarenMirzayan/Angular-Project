@@ -31,8 +31,12 @@
       <button class="searchbtn" (click)="openSearch()">
         <fa-icon [icon]="this.faSearch" class="user-icon"></fa-icon>
       </button>
-      <a [routerLink]="['/cart']" class="cart icon-link"><fa-icon [icon]="this.faCart" class="cart-icon"></fa-icon></a>
-      <a [routerLink]="['/login']" class="user icon-link"><fa-icon [icon]="this.faUser" class="user-icon"></fa-icon></a>
+      <a [routerLink]="['/cart']" class="cart icon-link">
+        <fa-icon [icon]="this.faCart" class="cart-icon"></fa-icon>
+      </a>
+      <a (click)="navigateUser()" class="user icon-link">
+        <fa-icon [icon]="this.faUser" class="user-icon"></fa-icon>
+      </a>
       <a [routerLink]="['/wishlist']">Wishlist</a>
     </div>
 

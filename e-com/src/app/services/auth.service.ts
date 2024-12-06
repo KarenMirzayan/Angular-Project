@@ -13,6 +13,10 @@ export class AuthService {
   private userIdSubject = new BehaviorSubject<string | null>(null); // State management for user ID
   userId$ = this.userIdSubject.asObservable();
 
+  private userDetailsSubject = new BehaviorSubject<{ firstName: string; lastName: string } | null>(null); // State for user details
+  userDetails$ = this.userDetailsSubject.asObservable();
+
+
   private userId: string | null = null;
 
   constructor(private auth: Auth, private firestore: Firestore) {
@@ -35,6 +39,12 @@ export class AuthService {
           const userDoc = querySnapshot.docs[0];
           this.userIdSubject.next(userDoc.id); // Populate userIdSubject
           this.isAuthSubject.next(true); // Set auth state to true
+
+          const userData = userDoc.data();
+          this.userDetailsSubject.next({
+            firstName: userData['firstName'],
+            lastName: userData['lastName'],
+          });
         }
       }
     }
@@ -43,7 +53,6 @@ export class AuthService {
   // Login method
   async login(email: string, password: string): Promise<void> {
     try {
-      // Firebase Authentication
       const userCredential: UserCredential = await signInWithEmailAndPassword(this.auth, email, password);
 
       // Query Firestore for the user by email
@@ -55,6 +64,12 @@ export class AuthService {
         const userDoc = querySnapshot.docs[0];
         this.userIdSubject.next(userDoc.id);
         this.isAuthSubject.next(true); // Set auth state to true
+
+        const userData = userDoc.data();
+        this.userDetailsSubject.next({
+          firstName: userData['firstName'],
+          lastName: userData['lastName'],
+        });
       } else {
         throw new Error('User not found in Firestore');
       }
@@ -64,22 +79,18 @@ export class AuthService {
     }
   }
 
-  // Logout method
   logout(): void {
     this.auth.signOut();
-    this.isAuthSubject.next(false); // Reset auth state
+    this.isAuthSubject.next(false); 
+    this.userIdSubject.next(null);
+    this.userDetailsSubject.next(null);
   }
 
   // Get the current authenticated user's ID
-  getUserId(): string {
-    if(this.userId) {
-      return this.userId;
-    }
-    else{
-      return ''
-    }
+  getUserId(): string | null {
+    return this.userId;
   }
-
+  
   // Get auth state
   isAuthenticated(): Observable<boolean> {
     return this.isAuth$;

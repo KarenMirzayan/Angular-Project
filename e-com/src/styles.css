@@ -17,15 +17,33 @@ body {
 html, body {
   height: 100%;
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: #3c3c3c;}
 
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 36px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+}
 .button-primary {
   background-color: #406ac0;
   border-radius: 100px;
   color: #fff;
-  padding: 10px 20px;
+  padding: 12px 28px;
   cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+}
 
+a {
+  color: #406ac0;
+  cursor: pointer;
+  text-decoration: underline;
 }
 /* .button-beauty{
   color: rgb(255, 250, 240);
