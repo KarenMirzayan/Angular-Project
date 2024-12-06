@@ -59,12 +59,12 @@
 
 .icon-link:link{
   text-decoration: none;
-  color: #000000;
+  color: #406ac0;
 }
 
 .icon-link:visited{
   text-decoration: none;
-  color: #000000;
+  color: #406ac0;
 }
 
 .user-icon{
@@ -76,7 +76,7 @@
 }
 
 fa-icon {
-  color: #3c3c3c;
+  color: #406ac0;
 }
 
 .blur {
@@ -107,16 +107,24 @@ fa-icon {
 }
 
 .catalog-dropdown ul {
+
+  display: flex;
+  flex-direction: row;
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 24px;
 }
 
 .catalog-dropdown a {
   text-decoration: none;
   color: #333;
+  cursor: pointer;
 }
 
 .catalog-dropdown li {
+  cursor: pointer;
+
   margin: 5px 5px 0;
 }
+
