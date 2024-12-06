@@ -4,10 +4,12 @@
     <!-- Personal Information Section -->
     <section class="personal-info">
       <h2>Personal Information</h2>
-      <p>{{ firstName }}</p>
-      <p>{{ lastName }}</p>
-      <button (click)="openEditPopup()">Edit</button>
+      <p>{{ firstName }} {{ lastName }}</p>
+      <a (click)="openEditPopup()">Edit</a>
     </section>
+
+    <a [routerLink]="['/account/addresses']">Manage Addresses</a>
+
   
     <!-- Popup Form -->
     <app-edit-popup

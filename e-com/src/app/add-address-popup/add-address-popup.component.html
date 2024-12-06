@@ -1,0 +1,16 @@
+<div class="popup-overlay">
+    <div class="popup">
+      <h2>Add a New Address</h2>
+      <form [formGroup]="addressForm" (ngSubmit)="saveAddress()">
+        <input type="text" formControlName="address" placeholder="Address" required />
+        <input type="text" formControlName="city" placeholder="City" required />
+        <input type="text" formControlName="zipCode" placeholder="Zip Code" required />
+  
+        <div class="popup-actions">
+          <button type="submit" class="save-btn">Save</button>
+          <button type="button" class="cancel-btn" (click)="closePopup()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

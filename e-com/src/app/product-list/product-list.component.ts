@@ -42,10 +42,10 @@
         this.getCategory(id)
       }
 
-      this.userId = this.authService.getUserId();
-      if (this.userId) {
-        this.loadWishlist()
-      }
+      // this.userId = this.authService.getUserId();
+      // if (this.userId) {
+      //   this.loadWishlist()
+      // }
     }
 
     getAllProducts() {

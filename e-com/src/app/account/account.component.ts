@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { EditPopupComponent } from '../edit-popup/edit-popup.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-account',
   standalone: true,
   imports: [
     CommonModule,
-    EditPopupComponent
+    EditPopupComponent,
+    RouterLink
   ],
   templateUrl: './account.component.html',
   styleUrl: './account.component.css'

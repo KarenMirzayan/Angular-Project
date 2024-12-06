@@ -1,0 +1,37 @@
+.addresses-page {
+    margin: 80px
+}
+
+.address-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.address-card {
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+}
+
+.address {
+    margin-bottom: 12px;
+}
+
+.add-address {
+    margin-bottom: 24px;
+}
+.address-card__actions {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+h1 {
+    margin-bottom: 24px;
+}
+
+.to-account {
+    margin-bottom: 24px;
+}
