@@ -1,6 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {CarouselModule} from "primeng/carousel";
+import {
+  faCircleChevronLeft,
+  faCircleChevronRight
+} from "@fortawesome/free-solid-svg-icons";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'app-promo-gallery',
@@ -9,6 +14,7 @@ import {CarouselModule} from "primeng/carousel";
     NgOptimizedImage,
     CommonModule,
     CarouselModule,
+    FaIconComponent,
   ],
   templateUrl: './promo-gallery.component.html',
   styleUrl: './promo-gallery.component.css',
@@ -34,6 +40,9 @@ export class PromoGalleryComponent implements OnInit{
       p: "Manifest glow with skincare gifts by Laneige"
     }
   ]
+
+  faRight = faCircleChevronRight;
+  faLeft = faCircleChevronLeft;
 
   currentIndex = 0;
   translateX = 0;

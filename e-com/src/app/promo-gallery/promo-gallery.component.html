@@ -3,13 +3,17 @@
     <div *ngFor="let item of items; index as i" class="carousel-item">
       <div class="img-wrapper" [style]="bgimage(item.img)">
       </div>
-      <div class="gallery-item" id="{{ i }}-gallery">
+      <div class="gallery-item gallery-{{i}}">
         <h1>{{ item.h1 }}</h1>
         <p> {{ item.p }}</p>
         <button class="visit" (click)="travel(item.id)">SHOP NOW</button>
       </div>
     </div>
   </div>
-  <button (click)="prev()" class="prev-button button-scroll">Prev</button>
-  <button (click)="next()" class="next-button button-scroll">Next</button>
+  <button (click)="prev()" class="prev-button button-scroll">
+    <fa-icon [icon]="faLeft"></fa-icon>
+  </button>
+  <button (click)="next()" class="next-button button-scroll">
+    <fa-icon [icon]="faRight"></fa-icon>
+  </button>
 </div>
