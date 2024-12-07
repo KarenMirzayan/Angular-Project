@@ -61,8 +61,14 @@ export class AccountComponent implements OnInit {
     this.isPopupVisible = false;
   }
 
-  updatePersonalDetails(updatedDetails: { firstName: string, lastName: string }): void {
+  async updatePersonalDetails(updatedDetails: { firstName: string, lastName: string }): Promise<void> {
     this.firstName = updatedDetails.firstName;
     this.lastName = updatedDetails.lastName;
+
+    try {
+      await this.authService.updateUserDetails(updatedDetails);
+    } catch (error) {
+      console.error('Failed to update personal details:', error);
+    }
   }
 }

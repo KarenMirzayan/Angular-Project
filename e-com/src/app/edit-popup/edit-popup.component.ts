@@ -38,6 +38,7 @@ export class EditPopupComponent {
     if (this.editForm.valid) {
       this.update.emit(this.editForm.value);
     }
+    this.closePopup();
   }
 
   closePopup(): void {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
-import { Firestore, collection, query, where, getDocs } from '@angular/fire/firestore';
+import { Firestore, collection, query, where, getDocs, updateDoc, doc } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -91,8 +91,19 @@ export class AuthService {
     return this.userId;
   }
   
-  // Get auth state
   isAuthenticated(): Observable<boolean> {
     return this.isAuth$;
+  }
+
+  async updateUserDetails(updatedDetails: { firstName: string; lastName: string }): Promise<void> {
+    const userId = this.userIdSubject.value;
+    if (!userId) {
+      throw new Error('User ID not available');
+    }
+
+    const userDocRef = doc(this.firestore, `users/${userId}`);
+    await updateDoc(userDocRef, updatedDetails);
+
+    this.userDetailsSubject.next(updatedDetails);
   }
 }
